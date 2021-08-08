@@ -50,6 +50,13 @@
     </section>
 
     <!-- Template -->
+
+    <div class="design d-none" 
+        data-title="Glass Effect" 
+        data-link="./html/glass-effect/index.html"
+        data-img="./image/glass-effect.png"
+    ></div>
+
     <div class="design d-none" 
         data-title="Split Image on hover" 
         data-link="./html/split-image/index.html"
@@ -66,6 +73,8 @@
         data-link="./html/transparent-text-effect/index.html"
         data-img="./image/transparent-text-effect.png"
     ></div>
+
+    
    
   
 
@@ -89,7 +98,7 @@
                 var title = $(this).data('title');
                 var link = $(this).data('link');
                 var img = $(this).data('img');
-                $('.row').append(
+                $('.row').prepend(
                     `
                     <div class="col-3 my-3">
                         <div class="box">
