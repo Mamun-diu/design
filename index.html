@@ -45,39 +45,27 @@
     </nav>
     <section class="container">
         <div class="row my-3">
-            <div class="col-3 my-3">
-                <div class="box">
-                    <div class="card">
-                        <div class="card-body m-0 p-0">
-                            <img style="width: 100%; height: 100%;" src="./image/moon-light.png" alt="image">
-                        </div>
-                        <div class="card-footer text-center" >
-                            Moon Light
-                        </div>
-                    </div>
-                    <div class="view">
-                        <button  data-link="./parallax/simple-parallax-scrolling/index.html" class="button btn btn-primary" >Click to Preview</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 my-3">
-                <div class="box">
-                    <div class="card">
-                        <div class="card-body m-0 p-0">
-                            <img style="width: 100%; height: 100%;" src="./image/transparent-text-effect.png" alt="image">
-                        </div>
-                        <div class="card-footer text-center" >
-                            Transparent Text Effect
-                        </div>
-                    </div>
-                    <div class="view">
-                        <button data-link="./html/transparent-text-effect/index.html"  class="button btn btn-primary" >Click to Preview</button>
-                    </div>
-                </div>
-            </div>
             
         </div>
     </section>
+
+    <!-- Template -->
+    <div class="design d-none" 
+        data-title="Split Image on hover" 
+        data-link="./html/split-image/index.html"
+        data-img="./image/split-image.png"
+    ></div>
+    <div class="design d-none" 
+        data-title="Moon Light" 
+        data-link="./parallax/simple-parallax-scrolling/index.html"
+        data-img="./image/moon-light.png"
+    ></div>
+
+    <div class="design d-none" 
+        data-title="Transparent Text Effect" 
+        data-link="./html/transparent-text-effect/index.html"
+        data-img="./image/transparent-text-effect.png"
+    ></div>
    
   
 
@@ -94,16 +82,59 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script>
+        $("#staticBackdrop").hide();
+
         $(document).ready(function(){
-            $("#staticBackdrop").hide();
+            $(".design").each(function(item){
+                var title = $(this).data('title');
+                var link = $(this).data('link');
+                var img = $(this).data('img');
+                $('.row').append(
+                    `
+                    <div class="col-3 my-3">
+                        <div class="box">
+                            <div class="card">
+                                <div class="card-body m-0 p-0">
+                                    <img style="width: 100%; height: 100%;" src="${img}">
+                                </div>
+                                <div class="card-footer text-center" >
+                                    ${title}
+                                </div>
+                            </div>
+                            <div class="view">
+                                <button  data-link="${link}" class="button btn btn-primary" >Click to Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                )
+            })
+            
 
             $(".button").click(function(){
                 $("#staticBackdrop").show();
                 var link = $(this).data('link');
                 $('iframe').attr('src',link);
+
+                var elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { /* IE11 */
+                    elem.msRequestFullscreen();
+                }
+
             })
             $(".custom-modal span").click(function(){
                 $("#staticBackdrop").hide();
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
             })
         })
     </script>
