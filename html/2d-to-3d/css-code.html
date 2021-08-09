@@ -14,13 +14,44 @@
   </head>
   <body>
 
-    <div class="imgBox">
-      <img style="--i:2;--j:0;" src="image/bg.jpg" alt="">
-      <img style="--i:1;--j:1;" src="image/bg.jpg" alt="">
-      <img style="--i:0;--j:2;" src="image/bg.jpg" alt="">
-      <img style="--i:-1;--j:3;" src="image/bg.jpg" alt="">
-      <img style="--i:-2;--j:4;" src="image/bg.jpg" alt="">
-    </div>
+    <pre style="color:#fff;background:#000;">
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  body{
+      min-height: 100vh;
+      /* background-color: #262e31; */
+      background : #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .imgBox{
+      position: relative;
+      width: 300px;
+      height: 300px;
+      transform-style: preserve-3d;
+      perspective: 100px;
+  
+  }
+  .imgBox img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+      z-index: calc(1 + var(--i));
+      opacity: calc(1 - (0.2 * var(--j)));
+      /* transform: rotate(-30deg) skew(25deg); */
+  }
+  .imgBox:hover img{
+      transform: rotate(-30deg) skew(25deg) translateX(calc(35px * var(--i))) translateY(calc(-35px * var(--i)));
+      box-shadow: -20px 20px 20px rgba(0,0,0,0.25);
+  }
     </pre>
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

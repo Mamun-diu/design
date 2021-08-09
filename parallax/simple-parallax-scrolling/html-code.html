@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>2D to 3D</title>
+  </head>
+  <body>
+
+    <pre style="color:#fff;background:#000;">
+      &lt;!doctype html&gt;
+      &lt;html lang="en"&gt;
+        &lt;head&gt;
+          &lt;!-- Required meta tags --&gt;
+          &lt;meta charset="utf-8"&gt;
+          &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+          &lt;!-- Bootstrap CSS --&gt;
+          &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"&gt;
+          &lt;link rel="stylesheet" href="./style.css"&gt;
+
+          &lt;title&gt;Moon Light Parallax Effects | Vanilla Javascript&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          
+
+          &lt;section class=""&gt;
+              &lt;img src="image/bg.jpg" alt="" id="bg"&gt;
+              &lt;img src="image/moon.png" alt="" id="moon"&gt;
+              &lt;img src="image/mountain.png" alt="" id="mountain"&gt;
+              &lt;img src="image/road.png" alt="" id="road"&gt;
+              &lt;h2 id="text"&gt;Moon Light&lt;/h2&gt;
+          &lt;/section&gt;
+          
+          &lt;script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"&gt;&lt;/script&gt;
+          &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"&gt;&lt;/script&gt;
+          &lt;script&gt;
+              let bg = document.getElementById('bg');
+              let moon = document.getElementById('moon');
+              let mountain = document.getElementById('mountain');
+              let road = document.getElementById('road');
+              let text = document.getElementById('text');
+
+              window.addEventListener('scroll',function(){
+                  var value = window.scrollY;
+
+                  bg.style.top = value * 0.5 + 'px';
+                  moon.style.left = -value * 1 + 'px';
+                  moon.style.top = value * 0.5 + 'px';
+                  mountain.style.top = -value * 0.15 + 'px';
+                  road.style.top = value * 0.15 + 'px';
+                  text.style.top = value * 1 + 'px';
+
+              });
+          &lt;/script&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+    </pre>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
