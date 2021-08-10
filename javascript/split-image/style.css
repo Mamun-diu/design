@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+html,body{
+    display: grid;
+    height: 100%;
+    text-align: center;
+    place-items: center;
+    background: #dde6f0;
+}
+.progresss {
+    position: absolute;   
+    height: 160px;
+    width: 160px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin: -80px 0 0 -80px;
+}
+
+.progresss-circle {
+  transform: rotate(-90deg);
+	margin-top: -40px;
+}
+
+.progresss-circle-back {
+	fill: none; 
+	stroke: #D2D2D2;
+	stroke-width:10px;
+}
+
+.progresss-circle-prog {
+	fill: none; 
+	stroke: #4c00fc;
+	stroke-width: 10px;  
+	stroke-dasharray: 0 999;    
+	stroke-dashoffset: 0px;
+    transition: stroke-dasharray 0.7s linear 0s;
+}
+
+.progresss-text {
+	width: 100%;
+	position: absolute;
+	top: 60px;
+	text-align: center;
+	font-size: 2em;
+}

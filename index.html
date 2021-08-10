@@ -136,12 +136,54 @@
       <iframe src="" frameborder="0"></iframe>
     </div>
   </div>
+
+    <div class="loader">
+        <div class="progresss">
+            <svg class="progresss-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+            <circle class="progresss-circle-back"
+                    cx="80" cy="80" r="74"></circle>
+                <circle class="progresss-circle-prog"
+                        cx="80" cy="80" r="74"></circle>
+            </svg>
+            <div class="progresss-text" data-progresss="0">0%</div>
+        </div>	
+    </div>
+
+</div>
+<div class="css-script-clear"></div>
+</div>
+</div>
+<div class="container">
+<h1>resloader: Image Preloader Demo</h1>
+<div class="status">
+    <b>status : </b>
+    <span></span>
+</div>
+<div class="division">
+    <b>currentIndex / total : </b>
+    <span></span>
+</div>
+<div class="percent">
+    <b>load-percent : </b>
+    <span></span>
+</div>
+<div class="progress-box">
+    <b>progress:</b>
+    <div class="progress"></div>
+</div>
+<div class="tips">
+    * use ctrl + F5 instead of F5 to refresh page
+</div>
+</div>
+
+
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="./resloader.js"></script>
     <script>
         
-
+        var imgData = []
         $(document).ready(function(){
             $(".design").each(function(item){
                 var title = $(this).data('title');
@@ -149,6 +191,7 @@
                 var img = $(this).data('img');
                 var dataHtml = $(this).data('html');
                 var dataCSS = $(this).data('css');
+                imgData.push(img);
                 
                 $('.row').prepend(
                     `
@@ -199,6 +242,7 @@
                     elem.msRequestFullscreen();
                 }
                 $('body').css({'overflow':'hidden'})
+                
 
             })
 
@@ -226,6 +270,50 @@
         document.querySelector('.menu li:nth-child(3)').addEventListener('click',function(){
             document.querySelector('iframe').setAttribute('src',this.getAttribute('data-links'));
         })
+
     </script>
+    
+    <script>
+         
+        
+        $(document).ready(function(){
+            setTimeout(() => {
+                const options = {
+                    resources: imgData, //resources expected a JSON or Array
+                    onStart: function(total) {
+                        console.log('onStart:' + total)
+                        document.querySelector(".status > span").innerHTML = 'onStart'
+                        $('.loader').show();
+                        $('body').css({'overflow':'hidden'})
+                    },
+                    onProgress: function(currentIndex, total) {
+                        console.log('onProgress:' + currentIndex + '/' + total)
+                        document.querySelector(".status > span").innerHTML = 'onProgress'
+                        document.querySelector(".division > span").innerHTML = currentIndex + '/' + total
+                        document.querySelector(".percent > span").innerHTML = Math.floor((currentIndex / total) * 100) + '%'
+                        document.querySelector(".progress").style.width = Math.floor((currentIndex / total) * 100) + '%'
+
+
+                        var rand = Math.floor((currentIndex / total) * 100);
+                        var x = document.querySelector('.progresss-circle-prog');
+                        x.style.strokeDasharray = (rand * 4.65) + ' 999';
+                        var el = document.querySelector('.progresss-text');
+                        el.innerHTML =  rand+'%';
+                    },
+                    onComplete: function(total,result) {
+                        console.log('onComplete:' + total)
+                        console.log(result)
+                        document.querySelector(".status > span").innerHTML = 'onComplete'
+                        $('.loader').hide();
+                        $('body').css({'overflow':'auto'})
+                    }
+                }
+
+                resloader(options)
+            }, 100);
+        })
+        
+    </script>
+    
   </body>
 </html>
