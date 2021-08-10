@@ -149,32 +149,6 @@
         </div>	
     </div>
 
-</div>
-<div class="css-script-clear"></div>
-</div>
-</div>
-<div class="container">
-<h1>resloader: Image Preloader Demo</h1>
-<div class="status">
-    <b>status : </b>
-    <span></span>
-</div>
-<div class="division">
-    <b>currentIndex / total : </b>
-    <span></span>
-</div>
-<div class="percent">
-    <b>load-percent : </b>
-    <span></span>
-</div>
-<div class="progress-box">
-    <b>progress:</b>
-    <div class="progress"></div>
-</div>
-<div class="tips">
-    * use ctrl + F5 instead of F5 to refresh page
-</div>
-</div>
 
 
     
@@ -281,17 +255,16 @@
                 const options = {
                     resources: imgData, //resources expected a JSON or Array
                     onStart: function(total) {
-                        console.log('onStart:' + total)
-                        document.querySelector(".status > span").innerHTML = 'onStart'
-                        $('.loader').show();
-                        $('body').css({'overflow':'hidden'})
+                        // console.log('onStart:' + total)
+                        // document.querySelector(".status > span").innerHTML = 'onStart'
+                        
                     },
                     onProgress: function(currentIndex, total) {
-                        console.log('onProgress:' + currentIndex + '/' + total)
-                        document.querySelector(".status > span").innerHTML = 'onProgress'
-                        document.querySelector(".division > span").innerHTML = currentIndex + '/' + total
-                        document.querySelector(".percent > span").innerHTML = Math.floor((currentIndex / total) * 100) + '%'
-                        document.querySelector(".progress").style.width = Math.floor((currentIndex / total) * 100) + '%'
+                        // console.log('onProgress:' + currentIndex + '/' + total)
+                        // document.querySelector(".status > span").innerHTML = 'onProgress'
+                        // document.querySelector(".division > span").innerHTML = currentIndex + '/' + total
+                        // document.querySelector(".percent > span").innerHTML = Math.floor((currentIndex / total) * 100) + '%'
+                        // document.querySelector(".progress").style.width = Math.floor((currentIndex / total) * 100) + '%'
 
 
                         var rand = Math.floor((currentIndex / total) * 100);
@@ -301,10 +274,10 @@
                         el.innerHTML =  rand+'%';
                     },
                     onComplete: function(total,result) {
-                        console.log('onComplete:' + total)
-                        console.log(result)
-                        document.querySelector(".status > span").innerHTML = 'onComplete'
-                        $('.loader').hide();
+                        // console.log('onComplete:' + total)
+                        // console.log(result)
+                        // document.querySelector(".status > span").innerHTML = 'onComplete'
+                        $('.loader').css({'transform':'scale(0)'})
                         $('body').css({'overflow':'auto'})
                     }
                 }
